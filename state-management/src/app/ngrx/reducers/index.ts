@@ -7,20 +7,20 @@ import {Cow} from "../../models/cow";
 import {farmReducer, FarmState} from "./farm.reducer";
 
 
-export interface State {
+export interface AppState {
   farm:FarmState,
   //chicken:{[id:number]:Chicken},
   //cow:{[id:number]:Cow}
 }
 
-export const reducers: ActionReducerMap<State> = {
+export const reducers: ActionReducerMap<AppState> = {
   farm:farmReducer,
 
 };
 
 // ------------------ SELECTORS ------------------------------ //
 
-export const selectFarms = (state:State)=>{
+export const selectFarms = (state:AppState)=>{
   return Object.keys(state.farm).map((id:string)=>state.farm[id]);
 }
 

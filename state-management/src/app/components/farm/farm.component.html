@@ -1,6 +1,9 @@
 <button mat-raised-button color="primary" (click)="createFarm()">
   Create Farm
 </button>
+<button mat-raised-button color="primary" (click)="deleteFarms()">
+  Delete All
+</button>
 <mat-divider></mat-divider>
 <mat-form-field>
   <input matInput placeholder="Farm name" [formControl]="farmName" (keydown.enter)="createFarm()">
