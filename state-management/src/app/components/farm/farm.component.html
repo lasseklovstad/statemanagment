@@ -1,3 +1,17 @@
-<p>
-  farm works!
-</p>
+<button mat-raised-button color="primary" (click)="createFarm()">
+  Create Farm
+</button>
+<mat-divider></mat-divider>
+<mat-form-field>
+  <input matInput placeholder="Farm name" [formControl]="farmName" (keydown.enter)="createFarm()">
+</mat-form-field>
+
+
+<mat-list *ngFor="let farm of farms$ | async">
+  <mat-list-item>
+    <a mat-flat-button n color="warning">
+      {{farm.id}} {{farm.name}}
+    </a>
+    <mat-divider></mat-divider>
+  </mat-list-item>
+</mat-list>
