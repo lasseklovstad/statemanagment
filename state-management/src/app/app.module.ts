@@ -10,7 +10,6 @@ import { FarmCounterComponent } from './components/farm-counter/farm-counter.com
 import {StoreModule} from "@ngrx/store";
 import {StoreDevtoolsModule} from "@ngrx/store-devtools";
 import {reducers} from "./ngrx/reducers";
-import {FarmState1} from "./ngxs/farm.state";
 import {environment} from '../environments/environment';
 
 
