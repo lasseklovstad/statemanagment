@@ -3,6 +3,8 @@ import {Observable} from "rxjs";
 import {Farm} from "../../models/farm";
 import {Select} from "@ngxs/store";
 import {FarmState1} from "../../ngxs/farm.state";
+import {selectFarms, AppState} from '../../ngrx/reducers';
+import {Store, select} from '@ngrx/store';
 
 @Component({
   selector: 'app-farm-counter',
@@ -10,13 +12,12 @@ import {FarmState1} from "../../ngxs/farm.state";
   styleUrls: ['./farm-counter.component.css']
 })
 export class FarmCounterComponent implements OnInit {
+  public farms$:Observable<Farm[]>
 
-  @Select(FarmState1.farms)farms$:Observable<Farm[]>;
-
-  constructor() { }
+  constructor(private store:Store<AppState>) { }
 
   ngOnInit() {
-    //this.farms$ = this.store.pipe(select(selectFarms));
+    this.farms$ = this.store.pipe(select(selectFarms));
   }
 
 }

@@ -9,7 +9,7 @@ export enum FarmActionTypes {
 export class AddFarm implements Action {
   readonly type = FarmActionTypes.Add;
 
-  constructor(public payload: { farm: Farm }) {
+  constructor(public payload: Farm) {
   }
 }
 export class DeleteFarms implements Action {

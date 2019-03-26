@@ -1,20 +1,18 @@
 import {Farm} from "../../models/farm";
 import {FarmActionTypes, FarmActionUnion} from "../actions/farm.action";
 
-export interface FarmState{
-[id:number]:Farm;
-}
-export const initialFarmState:FarmState = {};
+
+export const initialFarmState:Farm[] = [];
 
 export function farmReducer(
   state=initialFarmState,
   action:FarmActionUnion
-):FarmState{
+):Farm[]{
   switch (action.type) {
     case FarmActionTypes.Add:
-      return {...state,[action.payload.farm.id]:action.payload.farm};
+      return [...state,action.payload];
     case FarmActionTypes.DeleteAll:
-      return {};
+      return [];
     default:
       return state;
   }
