@@ -12,6 +12,7 @@ export class AddFarm implements Action {
   constructor(public payload: { farm: Farm }) {
   }
 }
+
 export class DeleteFarms implements Action {
   readonly type = FarmActionTypes.DeleteAll;
 

@@ -5,7 +5,7 @@ import {Farm} from "../../models/farm";
 import {Observable} from "rxjs";
 import {FormControl} from "@angular/forms";
 import {Select, Store} from "@ngxs/store";
-import {FarmState1} from "../../ngxs/farm.state";
+import {FarmState} from "../../ngxs/farm.state";
 import {AddFarm, DeleteFarms} from "../../ngxs/farm.action";
 
 @Component({
@@ -17,9 +17,9 @@ export class FarmComponent implements OnInit {
 
   //farms$:Observable<Farm[]>;
   farmName = new FormControl('');
-  @Select(FarmState1.farms) farms$:Observable<Farm[]>
+  @Select(FarmState.farms) farms$:Observable<Farm[]>
 
-  constructor(/*private store:Store<AppState>*/private store:Store) { }
+  constructor(private store:Store) { }
 
   ngOnInit() {
     //this.farms$ = this.store.pipe(select(selectFarms));
@@ -32,11 +32,6 @@ export class FarmComponent implements OnInit {
     farm.name = this.farmName.value;
     farm.chickens=[];
     farm.cows=[];
-    /*
-    //ngrx
-    this.store.dispatch(new AddFarm({farm:farm}));
-    */
-
     //ngxs
     this.store.dispatch(new AddFarm(farm))
 

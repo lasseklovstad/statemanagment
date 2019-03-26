@@ -11,10 +11,13 @@ export function farmReducer(
   action:FarmActionUnion
 ):FarmState{
   switch (action.type) {
+
     case FarmActionTypes.Add:
       return {...state,[action.payload.farm.id]:action.payload.farm};
+
     case FarmActionTypes.DeleteAll:
       return {};
+
     default:
       return state;
   }

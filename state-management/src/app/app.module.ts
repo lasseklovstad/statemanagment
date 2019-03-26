@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FarmComponent } from './components/farm/farm.component';
@@ -11,8 +10,10 @@ import { FarmCounterComponent } from './components/farm-counter/farm-counter.com
 import {NgxsReduxDevtoolsPluginModule} from "@ngxs/devtools-plugin";
 import {StoreModule} from "@ngrx/store";
 import {reducers} from "./ngrx/reducers";
-import {FarmState1} from "./ngxs/farm.state";
+import {FarmState} from "./ngxs/farm.state";
 import {NgxsModule} from "@ngxs/store";
+import {Farm} from './models/farm';
+import {environment} from '../environments/environment';
 
 
 @NgModule({
@@ -30,16 +31,13 @@ import {NgxsModule} from "@ngxs/store";
     MatInputModule,
     BrowserAnimationsModule,
     MatFormFieldModule,
-    StoreModule.forRoot(reducers),
-    /*StoreDevtoolsModule.instrument({
-      maxAge: 25, // Retains last 25 states
-      logOnly: environment.production, // Restrict extension to log-only mode
-    }),
-    */
     NgxsModule.forRoot([
-      FarmState1
+      FarmState
     ]),
-    NgxsReduxDevtoolsPluginModule.forRoot(),
+    NgxsReduxDevtoolsPluginModule.forRoot({
+      disabled:environment.production,
+      maxAge:25
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent]
