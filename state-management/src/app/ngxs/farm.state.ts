@@ -2,9 +2,6 @@ import {Action, Selector, State, StateContext} from "@ngxs/store";
 import {AddFarm, DeleteFarms} from "./farm.action";
 import {Farm} from "../models/farm";
 
-export interface FarmStateModel {
-  farms:Farm[];
-}
 
 @State<Farm[]>({
   name: 'farms',
